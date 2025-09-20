@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --background-color: #f3f4f6;
+  --text-color: #1f2937;
+  --card-bg-color: #ffffff;
+  --form-bg-color: #ffffff;
+  --form-input-bg: #f3f4f6;
+  --subtle-text-color: #4b5563;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --blue-accent: #3b82f6;
+  --blue-accent-hover: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #111827;
+    --text-color: #f9fafb;
+    --card-bg-color: #1f2937;
+    --form-bg-color: #1f2937;
+    --form-input-bg: #374151;
+    --subtle-text-color: #9ca3af;
+  }
+}
+
+/* --- Contenedor Principal de la App --- */
+.app-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@media (min-width: 640px) {
+  .app-container {
+    padding: 2.5rem;
+  }
+}

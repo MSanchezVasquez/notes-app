@@ -1,0 +1,115 @@
+/* --- Formulario de Notas --- */
+.note-form {
+  background-color: var(--form-bg-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2.5rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.note-form h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.note-form-input,
+.note-form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: var(--form-input-bg);
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  outline: none;
+  color: var(--text-color);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.note-form-input:focus,
+.note-form-textarea:focus {
+  border-color: var(--blue-accent);
+}
+
+.note-form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.color-palette {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-palette span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--subtle-text-color);
+}
+
+.color-button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+  font-family: Cascadia Code;
+}
+.note-form-input::placeholder,
+.note-form-textarea::placeholder {
+  font-family: Cascadia Code;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+}
+
+.color-button.selected {
+  outline: 2px solid var(--blue-accent);
+  outline-offset: 2px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--blue-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-accent-hover);
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}

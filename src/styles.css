@@ -1,0 +1,291 @@
+/* --- Estilos Globales y Modo Oscuro --- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --background-color: #f3f4f6;
+  --text-color: #1f2937;
+  --card-bg-color: #ffffff;
+  --form-bg-color: #ffffff;
+  --form-input-bg: #f3f4f6;
+  --subtle-text-color: #4b5563;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --blue-accent: #3b82f6;
+  --blue-accent-hover: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #111827;
+    --text-color: #f9fafb;
+    --card-bg-color: #1f2937;
+    --form-bg-color: #1f2937;
+    --form-input-bg: #374151;
+    --subtle-text-color: #9ca3af;
+  }
+}
+
+/* --- Contenedor Principal de la App --- */
+.app-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@media (min-width: 640px) {
+  .app-container {
+    padding: 2.5rem;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Encabezado --- */
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.header p {
+  font-size: 1.125rem;
+  color: var(--subtle-text-color);
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .header h1 {
+    font-size: 3rem;
+  }
+}
+
+/* --- Formulario de Notas --- */
+.note-form {
+  background-color: var(--form-bg-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2.5rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.note-form h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.note-form-input,
+.note-form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: var(--form-input-bg);
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  outline: none;
+  color: var(--text-color);
+  transition: border-color 0.2s;
+  box-sizing: border-box; /* Importante para que el padding no afecte el width */
+}
+
+.note-form-input:focus,
+.note-form-textarea:focus {
+  border-color: var(--blue-accent);
+}
+
+.note-form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.color-palette {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-palette span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--subtle-text-color);
+}
+
+.color-button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+}
+
+.color-button.selected {
+  outline: 2px solid var(--blue-accent);
+  outline-offset: 2px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--blue-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-accent-hover);
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+/* --- Malla de Notas --- */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .notes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 768px) {
+  .notes-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .notes-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* --- Tarjeta de Nota Individual --- */
+.note-item {
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s;
+  box-sizing: border-box;
+}
+
+.note-item:hover {
+  transform: translateY(-4px);
+}
+
+.note-content {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.note-content h3 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+  color: #1f2937;
+}
+
+.note-content p {
+  color: #374151;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #4b5563;
+}
+.icon-btn:hover {
+  color: var(--blue-accent);
+}
+.icon-btn.delete:hover {
+  color: #ef4444;
+}
+
+/* --- Mensaje de "No hay notas" --- */
+.no-notes {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-color: var(--card-bg-color);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow);
+}
+.no-notes h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--subtle-text-color);
+}
+.no-notes p {
+  color: var(--subtle-text-color);
+  margin-top: 0.5rem;
+}
