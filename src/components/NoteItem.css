@@ -34,6 +34,7 @@
 }
 
 .note-item {
+  will-change: transform, opacity;
   box-shadow: var(--shadow);
   border-radius: 0.5rem;
   padding: 1.25rem;

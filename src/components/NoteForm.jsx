@@ -1,6 +1,7 @@
 import "./NoteForm.css";
 import { useState, useRef, useEffect } from "react";
 import { useNotesStore } from "../store/notesStore";
+import { PlusIcon } from "./Icons";
 
 export function NoteForm({ noteToEdit, setNoteToEdit }) {
   const [title, setTitle] = useState("");
@@ -53,14 +54,22 @@ export function NoteForm({ noteToEdit, setNoteToEdit }) {
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="note-form">
       <h2>{noteToEdit ? "Editar Nota" : "Crear Nueva Nota"}</h2>
+      <label htmlFor="title" className="sr-only">
+        Título de la nota
+      </label>
       <input
+        id="title" // Vinculamos con el label
         type="text"
         placeholder="Título (opcional)"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         className="note-form-input"
       />
+      <label htmlFor="content" className="sr-only">
+        Contenido de la nota
+      </label>
       <textarea
+        id="content"
         placeholder="Escribe tu nota aquí..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
@@ -93,27 +102,11 @@ export function NoteForm({ noteToEdit, setNoteToEdit }) {
             </button>
           )}
           <button type="submit" className="btn btn-primary">
-            <PlusIcon /> {noteToEdit ? "Guardar Cambios" : "Agregar Nota"}
+            <PlusIcon size={20} />{" "}
+            {noteToEdit ? "Guardar Cambios" : "Agregar Nota"}
           </button>
         </div>
       </div>
     </form>
   );
 }
-
-const PlusIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="12" y1="5" x2="12" y2="19"></line>
-    <line x1="5" y1="12" x2="19" y2="12"></line>
-  </svg>
-);

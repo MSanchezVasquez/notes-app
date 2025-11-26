@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, lazy, useCallback, Suspense } from "react";
 import { NoteForm } from "./components/NoteForm";
 import { NoteItem } from "./components/NoteItem";
 import "./App.css";
 import { useNotesStore } from "./store/notesStore";
-import { useCallback } from "react";
-import ConfirmationModal from "./components/ConfirmationModal";
+import { NoNotesIcon } from "./components/Icons";
+
+const ConfirmationModal = lazy(() => import("./components/ConfirmationModal"));
 
 function App() {
   const notes = useNotesStore((state) => state.notes);
@@ -56,7 +57,7 @@ function App() {
             </div>
           ) : (
             <div className="no-notes">
-              <NoNotesIcon />
+              <NoNotesIcon className="no-notes-icon" size={64} />
               <h2>No hay notas todavía</h2>
               <p>¡Crea tu primera nota usando el formulario de arriba!</p>
             </div>
@@ -64,33 +65,17 @@ function App() {
         </main>
       </div>
       {noteToDelete && (
-        <ConfirmationModal
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-        />
+        <Suspense fallback={null}>
+          {" "}
+          {/* null porque carga muy rápido, o un spinner pequeño */}
+          <ConfirmationModal
+            onConfirm={handleConfirmDelete}
+            onCancel={handleCancelDelete}
+          />
+        </Suspense>
       )}
     </div>
   );
 }
-
-const NoNotesIcon = () => (
-  <svg
-    className="no-notes-icon"
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    {" "}
-    <path d="M13.73 21a2 2 0 0 1-3.46 0" /> <path d="M2 6h.01" />{" "}
-    <path d="M2 12h.01" /> <path d="M2 18h.01" /> <path d="M7 21h10" />{" "}
-    <path d="M7 3h10" /> <path d="M12 3v18" />{" "}
-  </svg>
-);
 
 export default App;
